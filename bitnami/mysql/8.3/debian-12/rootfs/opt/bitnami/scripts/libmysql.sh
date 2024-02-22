@@ -819,7 +819,7 @@ mysql_upgrade() {
         || ( "$major_version" -eq "8" && "$minor_version" -eq "0" && "$patch_version" -ge "16" )
     ]]; then
         mysql_stop
-        mysql_start_bg "--upgrade=FORCE"
+        mysql_start_bg
     else
         mysql_start_bg
         is_boolean_yes "${ROOT_AUTH_ENABLED:-false}" && args+=("-p$(get_master_env_var_value ROOT_PASSWORD)")
